@@ -5,6 +5,7 @@
     </header>
     <body>
         <!-- consume a single file bundle -->
+        <script src="./node_modules/onnxruntime-web/dist/ort.webgpu.min.js"></script>
         <script type="module" src="protobuf.js"></script>
         <script type="module" src="onnx.js"></script>
         <script type="module" src="onnxdecoder.js"></script>
@@ -25,7 +26,12 @@
                 let response = await fetch("add.json");
                     response = await response.json();
                 console.log(response);
-                console.log((onnxdecoder.createOnnxModel(response)));
+
+                let response2 = await fetch("add-input.json");
+                    response2 = await response2.json();
+                const session = (await onnxdecoder.createOnnxModel(response));
+                console.log(await onnxdecoder.runProtoOpTestcase(session, response2));
+
         }
         main();
         </script>

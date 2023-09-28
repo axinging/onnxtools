@@ -1,0 +1,10 @@
+{
+  "name": "T[0] T[2,4]",
+  "inputs": [
+    { "data": [3], "dims": [1], "type": "float32" },
+    { "data": [2, 1, 1, 2, 2, 3, 2, 4], "dims": [2, 4], "type": "float32" }
+  ],
+  "outputs": [
+    { "data": [5, 4, 4, 5, 5, 6, 5, 7], "dims": [2, 4], "type": "float32" }
+  ]
+}
