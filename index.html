@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <title>ONNX Runtime JavaScript examples: Quick Start - Web (using bundler)</title>
+    </header>
+    <body>
+        <!-- consume a single file bundle -->
+        <script type="module" src="protobuf.js"></script>
+        <script type="module" src="onnx.js"></script>
+        <script type="module" src="onnxdecoder.js"></script>
+        <script type="module">
+        import * as onnxModule from "./onnx.js";
+        import * as onnxdecoder from "./onnxdecoder.js";
+        const onnx = onnxModule.onnx;
+        // const onnxdecoder = onnxdecoderModule.createOnnxModel;
+        async function main() {
+                console.log((protobuf));
+                console.log((onnx.onnx));
+
+                const model = onnx.ModelProto.create();
+                model.irVersion = onnx.Version.IR_VERSION;
+                //model.opsetImport.push(opsetImport);
+                model.graph = onnx.GraphProto.create();
+
+                let response = await fetch("add.json");
+                    response = await response.json();
+                console.log(response);
+                console.log((onnxdecoder.createOnnxModel(response)));
+        }
+        main();
+        </script>
+    </body>
+</html>
+
