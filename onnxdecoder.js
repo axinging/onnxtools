@@ -143,7 +143,7 @@ export async  function createOnnxModel(test) {
     const loadedData = onnx.ModelProto.encode(model).finish();
 
     const session = await ort.InferenceSession.create(
-      loadedData, {executionProviders: [backendHint], ...{}});
+      loadedData, {executionProviders: [backendHint], ...{executionProviders: ['webgpu']}});
   return  session;
 }
 
